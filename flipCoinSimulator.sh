@@ -148,9 +148,9 @@ function sortTheSingletValues()
 	done | sort -rn -k3
 	echo "Winning combination Singlet::"
 	for value in "${!coinDictionarySinglet[@]}"
-   do
+	do
 		echo "$value : ${coinDictionarySinglet["$value"]}"
-   done | sort -rn -k3 | head -1
+	done | sort -rn -k3 | head -1
 }
 
 # Function for sorting the Doublet values and print the winning combination
@@ -163,9 +163,9 @@ function sortTheDoubletValues()
 	done | sort -rn -k3
 	echo "Winning combination of doublet::"
 	for value in "${!coinDictionaryDoublet[@]}"
-   do
-      echo "$value : ${coinDictionaryDoublet["$value"]}"
-   done | sort -rn -k3 | head -1
+	do
+		echo "$value : ${coinDictionaryDoublet["$value"]}"
+	done | sort -rn -k3 | head -1
 }
 
 # Function for sorting the Triplet values and print the winning combination
@@ -178,9 +178,9 @@ function sortTheTripletValues()
 	done | sort -rn -k3
 	echo "Winning combination of Triplet::"
 	for value in "${!coinDictionaryTriplet[@]}"
-   do
-      echo "$value : ${coinDictionaryTriplet["$value"]}"
-   done | sort -rn -k3 | head -1
+	do
+		echo "$value : ${coinDictionaryTriplet["$value"]}"
+	done | sort -rn -k3 | head -1
 }
 
 while(($choice<3))
