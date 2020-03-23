@@ -20,6 +20,10 @@ declare -A coinDictionarySinglet
 declare -A coinDictionaryDoublet
 declare -A coinDictionaryTriplet
 
+coinDictionarySinglet=([H]=$H [T]=$T)
+coinDictionaryDoublet=([HH]=$HH [HT]=$HT [TH]=$TH [TT]=$TT)
+coinDictionaryTriplet=([HHH]=$HHH [TTT]=$TTT [HTH]=$HTH [HHT]=$HHT [THH]=$THH [HTT]=$HTT [THT]=$THT [TTH]=$TTH)
+
 #Function to get Singlet Combination
 function getSingletCombination()
 {
@@ -133,6 +137,54 @@ function getTripletCombination()
 	echo "TTH percentage ::" $TTHpercentage
 }
 
+# Function for sorting the Singlet vlaues and print the winning combination 
+function sortTheSingletValues()
+{
+	echo "Combinations in sorted order are:"
+	for value in "${!coinDictionarySinglet[@]}"
+	do
+		echo "$value : ${coinDictionarySinglet["$value"]}"
+	done | sort -rn -k3
+	echo "Winning combination Singlet::"
+	for value in "${!coinDictionarySinglet[@]}"
+   do
+		echo "$value : ${coinDictionarySinglet["$value"]}"
+   done | sort -rn -k3 | head -1
+}
+
+# Function for sorting the Doublet values and print the winning combination
+function sortTheDoubletValues()
+{
+	echo "Combinations in sorted order are:"
+	for value in "${!coinDictionaryDoublet[@]}"
+	do
+		echo "$value : ${coinDictionaryDoublet["$value"]}"
+	done | sort -rn -k3
+	echo "Winning combination of doublet::"
+	for value in "${!coinDictionaryDoublet[@]}"
+   do
+      echo "$value : ${coinDictionaryDoublet["$value"]}"
+   done | sort -rn -k3 | head -1
+}
+
+# Function for sorting the Triplet values and print the winning combination
+function sortTheTripletValues()
+{
+	echo "Combinations in sorted order are:"
+	for value in "${!coinDictionaryTriplet[@]}"
+	do
+		echo "$value : ${coinDictionaryTriplet["$value"]}"
+	done | sort -rn -k3
+	echo "Winning combination of Triplet::"
+	for value in "${!coinDictionaryTriplet[@]}"
+   do
+      echo "$value : ${coinDictionaryTriplet["$value"]}"
+   done | sort -rn -k3 | head -1
+}
+
 getSingletCombination
 getDoubletCombination
 getTripletCombination
+sortTheSingletValues
+sortTheDoubletValues
+sortTheTripletValues
