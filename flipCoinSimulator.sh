@@ -15,6 +15,7 @@ THH=0
 HTT=0
 THT=0
 TTH=0
+choice=0
 
 declare -A coinDictionarySinglet
 declare -A coinDictionaryDoublet
@@ -182,9 +183,21 @@ function sortTheTripletValues()
    done | sort -rn -k3 | head -1
 }
 
-getSingletCombination
-getDoubletCombination
-getTripletCombination
-sortTheSingletValues
-sortTheDoubletValues
-sortTheTripletValues
+while(($choice<3))
+do
+	echo "Welcome to flip coin Simulation"
+	echo "1.Flip coin for singlet combination"
+	echo "2.Flip coin for doublet combination"
+	echo "3.Flip coin for triplet combination"
+	read -p "Enter your choice:" choice
+	case $choice in
+		1) getSingletCombination
+			sortTheSingletValues ;;
+		2) getDoubletCombination
+			sortTheDoubletValues ;;
+		3) getTripletCombination
+			sortTheTripletValues ;;
+		*) echo "Invalid choice" ;;
+	esac
+done
+
